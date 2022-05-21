@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio</title>
+    <link rel="stylesheet" href="style/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" >
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/89517b09ce.js" crossorigin="anonymous"></script>
+
+</head>
+<body class="main-content" id="main title">
+    <header class="section sec1 header active" id="home">
+        <div text-align="center" class="left-headder">
+            <h1 text-align="center">  Camila Diaz Marselli</h1><br>
+            <h2><i class="fa-solid fa-file-medical"></i>  Enfermera</h2>
+               <br>
+               <h3>Dosis infantiles:</h3><br>
+
+            <div id="drogas">
+              <!-- paracetamol -->
+                <div ID="paracetamol" Class="remedio"> 
+                    <div class="px-4 py-2 my-2 text-center border-bottom">
+                        
+                        <h1 class="display-5 fw-bold">Paracetamol infantil</h1>
+                        
+                      </div>
+                
+                      <div class="b-example-divider"></div>
+                
+                      <div class="container mt-5">
+                        <div class="row">
+                          <div class="col-12 col-md-4 offset-md-4">
+                            <form>
+                              <div class="mb-3">
+                                <label for="kg" class="form-label">Kilogramos del paciente: <span id="lbl-kg">25</span></label><br>
+                                <input type="range" class="form-range" min="0" max="50" id="kg" oninput="cambiarKg();">
+                                <div class="form-text">Desliza para cambiar los Kg.</div>
+                              </div>
+                              <div class="mb-3">
+                                <label for="kg" class="form-label">Resultado</label>
+                                <div id="resultado">
+                                    25 Kilogramos necesita 3.81 ml.
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                
+                      <div class="b-example-divider"></div>
+                
+                      <div class="bg-dark text-secondary mt-5 px-4 py-2 text-center">
+                        <div class="py-5">
+                          
+                          <div class="col-lg-6 mx-auto">
+                            
+                          </div>
+                        </div>
+                      </div>
+                
+                      <div class="b-example-divider mb-0"></div>
+                    </main>
+                
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+                
+                    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+                
+                    <script type="text/javascript">
+                
+                      var modelo = null;
+                
+                      //Cargar modelo
+                      (async () => {
+                          console.log("Cargando modelo...");
+                          modelo = await tf.loadLayersModel("model0.json");
+                          console.log("Modelo cargado...");
+                      })();
+                
+                      function cambiarKg() {
+                        var kg = document.getElementById("kg").value;
+                        document.getElementById("lbl-kg").innerHTML=kg;
+                        if (modelo != null) {
+                          var tensor = tf.tensor1d([parseInt(Math.round(kg * 100)/100)]);
+                          var prediccion = modelo.predict(tensor).dataSync();
+                          prediccion = Math.round(prediccion * 100)/100;
+                          document.getElementById("resultado").innerHTML = kg + " Kilogramos necesita " + prediccion + " ml.";
+                        } else {
+                          document.getElementById("resultado").innerHTML = "Intenta de nuevo en un momento...";
+                        }
+                      }
+                    </script>
+                </div>
+                <br>
+                <!-- morfina -->
+
+                <div ID="paracetamol" Class="remedio"> 
+                  <div class="px-4 py-2 my-2 text-center border-bottom">
+                      
+                      <h1 class="display-5 fw-bold">Paracetamol infantil</h1>
+                      
+                    </div>
+              
+                    <div class="b-example-divider"></div>
+              
+                    <div class="container mt-5">
+                      <div class="row">
+                        <div class="col-12 col-md-4 offset-md-4">
+                          <form>
+                            <div class="mb-3">
+                              <label for="kg" class="form-label">Kilogramos del paciente: <span id="lbl-kg">25</span></label><br>
+                              <input type="range" class="form-range" min="0" max="50" id="kg" oninput="cambiarKg();">
+                              <div class="form-text">Desliza para cambiar los Kg.</div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="kg" class="form-label">Resultado</label>
+                              <div id="resultado">
+                                  25 Kilogramos necesita 3.81 ml.
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+              
+                    <div class="b-example-divider"></div>
+              
+                    <div class="bg-dark text-secondary mt-5 px-4 py-2 text-center">
+                      <div class="py-5">
+                        
+                        <div class="col-lg-6 mx-auto">
+                          
+                        </div>
+                      </div>
+                    </div>
+              
+                    <div class="b-example-divider mb-0"></div>
+                  </main>
+              
+                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+              
+                  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+              
+                  <script type="text/javascript">
+              
+                    var modelo = null;
+              
+                    //Cargar modelo
+                    (async () => {
+                        console.log("Cargando modelo...");
+                        modelo = await tf.loadLayersModel("model0.json");
+                        console.log("Modelo cargado...");
+                    })();
+              
+                    function cambiarKg() {
+                      var kg = document.getElementById("kg").value;
+                      document.getElementById("lbl-kg").innerHTML=kg;
+                      if (modelo != null) {
+                        var tensor = tf.tensor1d([parseInt(Math.round(kg * 100)/100)]);
+                        var prediccion = modelo.predict(tensor).dataSync();
+                        prediccion = Math.round(prediccion * 100)/100;
+                        document.getElementById("resultado").innerHTML = kg + " Kilogramos necesita " + prediccion + " ml.";
+                      } else {
+                        document.getElementById("resultado").innerHTML = "Intenta de nuevo en un momento...";
+                      }
+                    }
+                  </script>
+              </div>
+              <br>
+            <!-- naproxeno -->
+
+            <div ID="naproxeno" Class="remedio"> 
+              <div class="px-4 py-2 my-2 text-center border-bottom">
+                  
+                  <h1 class="display-5 fw-bold">Naproxeno infantil</h1>
+                  
+                </div>
+          
+                <div class="b-example-divider"></div>
+          
+                <div class="container mt-5">
+                  <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                      <form>
+                        <div class="mb-3">
+                          <label for="kg" class="form-label">Kilogramos del paciente: <span id="lbl-kg">25</span></label><br>
+                          <input type="range" class="form-range" min="0" max="50" id="kg" oninput="cambiarKg();">
+                          <div class="form-text">Desliza para cambiar los Kg.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="kg" class="form-label">Resultado</label>
+                          <div id="resultado">
+                              25 Kilogramos necesita 3.81 ml.
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="b-example-divider"></div>
+          
+                <div class="bg-dark text-secondary mt-5 px-4 py-2 text-center">
+                  <div class="py-5">
+                    
+                    <div class="col-lg-6 mx-auto">
+                      
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="b-example-divider mb-0"></div>
+              </main>
+          
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+          
+              <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+          
+              <script type="text/javascript">
+          
+                var modelo = null;
+          
+                //Cargar modelo
+                (async () => {
+                    console.log("Cargando modelo...");
+                    modelo = await tf.loadLayersModel("model2.json");
+                    console.log("Modelo cargado...");
+                })();
+          
+                function cambiarKg() {
+                  var kg = document.getElementById("kg").value;
+                  document.getElementById("lbl-kg").innerHTML=kg;
+                  if (modelo != null) {
+                    var tensor = tf.tensor1d([parseInt(Math.round(kg * 100)/100)]);
+                    var prediccion = modelo.predict(tensor).dataSync();
+                    prediccion = Math.round(prediccion * 100)/100;
+                    document.getElementById("resultado").innerHTML = kg + " Kilogramos necesita " + prediccion + " ml.";
+                  } else {
+                    document.getElementById("resultado").innerHTML = "Intenta de nuevo en un momento...";
+                  }
+                }
+              </script>
+            </div>
+            <br>
+            <!-- ibuprofeno -->
+
+            <div ID="ibuprofeno" Class="remedio"> 
+              <div class="px-4 py-2 my-2 text-center border-bottom">
+                  
+                  <h1 class="display-5 fw-bold">Ibuprofeno infantil</h1>
+                  
+                </div>
+          
+                <div class="b-example-divider"></div>
+          
+                <div class="container mt-5">
+                  <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                      <form>
+                        <div class="mb-3">
+                          <label for="kg" class="form-label">Kilogramos del paciente: <span id="lbl-kg">25</span></label><br>
+                          <input type="range" class="form-range" min="0" max="50" id="kg" oninput="cambiarKg();">
+                          <div class="form-text">Desliza para cambiar los Kg.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="kg" class="form-label">Resultado</label>
+                          <div id="resultado">
+                              25 Kilogramos necesita 3.81 ml.
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="b-example-divider"></div>
+          
+                <div class="bg-dark text-secondary mt-5 px-4 py-2 text-center">
+                  <div class="py-5">
+                    
+                    <div class="col-lg-6 mx-auto">
+                      
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="b-example-divider mb-0"></div>
+              </main>
+          
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+          
+              <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+          
+              <script type="text/javascript">
+          
+                var modelo = null;
+          
+                //Cargar modelo
+                (async () => {
+                    console.log("Cargando modelo...");
+                    modelo = await tf.loadLayersModel("model.json");
+                    console.log("Modelo cargado...");
+                })();
+          
+                function cambiarKg() {
+                  var kg = document.getElementById("kg").value;
+                  document.getElementById("lbl-kg").innerHTML=kg;
+                  if (modelo != null) {
+                    var tensor = tf.tensor1d([parseInt(Math.round(kg * 100)/100)]);
+                    var prediccion = modelo.predict(tensor).dataSync();
+                    prediccion = Math.round(prediccion * 100)/100;
+                    document.getElementById("resultado").innerHTML = kg + " Kilogramos necesita " + prediccion + " ml.";
+                  } else {
+                    document.getElementById("resultado").innerHTML = "Intenta de nuevo en un momento...";
+                  }
+                }
+              </script>
+            </div>
+            <br>
+            <!-- ketorolako -->
+
+            <div ID="ketorolaco" Class="remedio"> 
+              <div class="px-4 py-2 my-2 text-center border-bottom">
+                  
+                  <h1 class="display-5 fw-bold">Ketorolaco infantil</h1>
+                  
+                </div>
+          
+                <div class="b-example-divider"></div>
+          
+                <div class="container mt-5">
+                  <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                      <form>
+                        <div class="mb-3">
+                          <label for="kg" class="form-label">Kilogramos del paciente: <span id="lbl-kg">25</span></label><br>
+                          <input type="range" class="form-range" min="0" max="50" id="kg" oninput="cambiarKg();">
+                          <div class="form-text">Desliza para cambiar los Kg.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="kg" class="form-label">Resultado</label>
+                          <div id="resultado">
+                              25 Kilogramos necesita 3.81 ml.
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="b-example-divider"></div>
+          
+                <div class="bg-dark text-secondary mt-5 px-4 py-2 text-center">
+                  <div class="py-5">
+                    
+                    <div class="col-lg-6 mx-auto">
+                      
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="b-example-divider mb-0"></div>
+              </main>
+          
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+          
+              <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+          
+              <script type="text/javascript">
+          
+                var modelo = null;
+          
+                //Cargar modelo
+                (async () => {
+                    console.log("Cargando modelo...");
+                    modelo = await tf.loadLayersModel("model.json");
+                    console.log("Modelo cargado...");
+                })();
+          
+                function cambiarKg() {
+                  var kg = document.getElementById("kg").value;
+                  document.getElementById("lbl-kg").innerHTML=kg;
+                  if (modelo != null) {
+                    var tensor = tf.tensor1d([parseInt(Math.round(kg * 100)/100)]);
+                    var prediccion = modelo.predict(tensor).dataSync();
+                    prediccion = Math.round(prediccion * 100)/100;
+                    document.getElementById("resultado").innerHTML = kg + " Kilogramos necesita " + prediccion + " ml.";
+                  } else {
+                    document.getElementById("resultado").innerHTML = "Intenta de nuevo en un momento...";
+                  }
+                }
+              </script>
+            </div>
+            <br>
+            <!-- ketoprofeno -->
+
+            <div ID="ketoprofeno" Class="remedio"> 
+              <div class="px-4 py-2 my-2 text-center border-bottom">
+                  
+                  <h1 class="display-5 fw-bold">Ketoprofeno infantil</h1>
+                  
+                </div>
+          
+                <div class="b-example-divider"></div>
+          
+                <div class="container mt-5">
+                  <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                      <form>
+                        <div class="mb-3">
+                          <label for="kg" class="form-label">Kilogramos del paciente: <span id="lbl-kg">25</span></label><br>
+                          <input type="range" class="form-range" min="0" max="50" id="kg" oninput="cambiarKg();">
+                          <div class="form-text">Desliza para cambiar los Kg.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="kg" class="form-label">Resultado</label>
+                          <div id="resultado">
+                              25 Kilogramos necesita 3.81 ml.
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="b-example-divider"></div>
+          
+                <div class="bg-dark text-secondary mt-5 px-4 py-2 text-center">
+                  <div class="py-5">
+                    
+                    <div class="col-lg-6 mx-auto">
+                      
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="b-example-divider mb-0"></div>
+              </main>
+          
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+          
+              <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+          
+              <script type="text/javascript">
+          
+                var modelo = null;
+          
+                //Cargar modelo
+                (async () => {
+                    console.log("Cargando modelo...");
+                    modelo = await tf.loadLayersModel("model.json");
+                    console.log("Modelo cargado...");
+                })();
+          
+                function cambiarKg() {
+                  var kg = document.getElementById("kg").value;
+                  document.getElementById("lbl-kg").innerHTML=kg;
+                  if (modelo != null) {
+                    var tensor = tf.tensor1d([parseInt(Math.round(kg * 100)/100)]);
+                    var prediccion = modelo.predict(tensor).dataSync();
+                    prediccion = Math.round(prediccion * 100)/100;
+                    document.getElementById("resultado").innerHTML = kg + " Kilogramos necesita " + prediccion + " ml.";
+                  } else {
+                    document.getElementById("resultado").innerHTML = "Intenta de nuevo en un momento...";
+                  }
+                }
+              </script>
+            </div>
+            <br>
+            <!-- celecoxilo -->
+
+            <div ID="celecoxilo" Class="remedio"> 
+              <div class="px-4 py-2 my-2 text-center border-bottom">
+                  
+                  <h1 class="display-5 fw-bold">Celecoxilo infantil</h1>
+                  
+                </div>
+          
+                <div class="b-example-divider"></div>
+          
+                <div class="container mt-5">
+                  <div class="row">
+                    <div class="col-12 col-md-4 offset-md-4">
+                      <form>
+                        <div class="mb-3">
+                          <label for="kg" class="form-label">Kilogramos del paciente: <span id="lbl-kg">25</span></label><br>
+                          <input type="range" class="form-range" min="0" max="50" id="kg" oninput="cambiarKg();">
+                          <div class="form-text">Desliza para cambiar los Kg.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="kg" class="form-label">Resultado</label>
+                          <div id="resultado">
+                              25 Kilogramos necesita 3.81 ml.
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="b-example-divider"></div>
+          
+                <div class="bg-dark text-secondary mt-5 px-4 py-2 text-center">
+                  <div class="py-5">
+                    
+                    <div class="col-lg-6 mx-auto">
+                      
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="b-example-divider mb-0"></div>
+              </main>
+          
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+          
+              <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+          
+              <script type="text/javascript">
+          
+                var modelo = null;
+          
+                //Cargar modelo
+                (async () => {
+                    console.log("Cargando modelo...");
+                    modelo = await tf.loadLayersModel("model.json");
+                    console.log("Modelo cargado...");
+                })();
+          
+                function cambiarKg() {
+                  var kg = document.getElementById("kg").value;
+                  document.getElementById("lbl-kg").innerHTML=kg;
+                  if (modelo != null) {
+                    var tensor = tf.tensor1d([parseInt(Math.round(kg * 100)/100)]);
+                    var prediccion = modelo.predict(tensor).dataSync();
+                    prediccion = Math.round(prediccion * 100)/100;
+                    document.getElementById("resultado").innerHTML = kg + " Kilogramos necesita " + prediccion + " ml.";
+                  } else {
+                    document.getElementById("resultado").innerHTML = "Intenta de nuevo en un momento...";
+                  }
+                }
+              </script>
+            </div>
+
+<!-- / dogras -->
+          </div> 
+            
+        </div>
+       
+        </div>
+        
+    
+    </header>
+    <main>
+        
+                </main>
+            
+                
+            </div>
+        </section>
+        
+        <section class="section sec3 portfolio" id="portafolio"></section>
+        <section class="section sec4 blogs" id="blogs"></section>
+        <section class="section sec5 contact" id="contact"></section>
+
+        
+    </main>
+    
+  </div>
+        
+        
+    </div>
+  </div>
+        <div class="Bottom">
+        <p><h2><i class="fas fa-newspaper"></i>  Supuestos a base de IA entrenada en TensorFlow</h2></p></div>
+        
+        </div>
+    </div>
+  </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
